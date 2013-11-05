@@ -1,4 +1,4 @@
-# phpserialize
+# bluehornet-client
 
 A library for interacting with BlueHornet's API using Clojure.
 
