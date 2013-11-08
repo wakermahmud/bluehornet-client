@@ -10,7 +10,7 @@
 
   :repositories
   [
-     ["snapshots" {:id "nexus" :url "http://host/nexus/content/repositories/snapshots"}]
-     ["releases"  {:id "nexus" :url "http://host/nexus/content/repositories/releases"}]
+     ["snapshots" {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/snapshots"}]
+     ["releases"  {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/releases"}]
   ]
   )
