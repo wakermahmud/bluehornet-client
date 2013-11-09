@@ -17,11 +17,15 @@
   (xml/element variable {} value))
 
 (defmethod process-key-value :list [variable value]
-  (let [item-variable (read-string (str variable "_item"))]
-    (xml/element variable {} (for [item value] (process-key-value item-variable item)))))
+  (let [item-variable (str variable "_item")]
+    (apply (partial xml/element variable {}) 
+           (for [item value] 
+             (process-key-value item-variable item)))))
 
 (defmethod process-key-value :map [variable value] 
-  (xml/element variable {} (for [[new-variable new-value] value] (process-key-value new-variable new-value))))
+  (apply (partial xml/element variable {}) 
+         (for [[new-variable new-value] value]
+           (process-key-value new-variable new-value))))
 
 (defn method-to-xml [method]
   "Turn a method representation into an xml tree."
