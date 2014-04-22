@@ -34,17 +34,17 @@
                 [(xml/element :methodName {} (:method-name method))]
                 (into (for [[variable value] (:args method)] (process-key-value variable value))))))
 
-(defn authentication-to-xml [authentication & {:keys [response-type]}]
+(defn authentication-to-xml [authentication response-type]
   (xml/element :authentication {}
                (into [(xml/element :response_type {} (or response-type "php") (xml/element :no_halt {} "1"))]
                (for [[internal external] {:api-key :api_key
                                           :shared-secret :shared_secret}]
                  (xml/element external {} (internal authentication))))))
 
-(defn make-call-data [authentication methods]
+(defn make-call-data [authentication methods response-type]
   (xml/element :api {} 
-               (authentication-to-xml authentication)
+               (authentication-to-xml authentication response-type)
                (xml/element :data {} (for [method methods] (method-to-xml method)))))
 
-(defn call-methods [post-data-fn bhserver authentication methods]
-  (post-data-fn bhserver (xml/emit-str (make-call-data authentication methods))))
+(defn call-methods [post-data-fn bhserver authentication methods & {:keys [response-type]}]
+  (post-data-fn bhserver (xml/emit-str (make-call-data authentication methods response-type))))
