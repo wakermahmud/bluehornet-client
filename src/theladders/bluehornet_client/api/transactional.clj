@@ -9,3 +9,6 @@
 
 (defn rebuild-template [template-id]
   (core/make-method "transactional.rebuildTemplate" :template_id template-id))
+
+(defn list-templates []
+  (core/make-method "transactional.listTemplates"))
