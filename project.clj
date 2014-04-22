@@ -1,4 +1,4 @@
-(defproject theladders/bluehornet-client "0.2.0"
+(defproject theladders/bluehornet-client "0.2.1-SNAPSHOT"
   :description "A library for interacting with BlueHornet's API using Clojure."
   :aot :all
   :dependencies [[org.clojure/clojure "1.4.0"]
