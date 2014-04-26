@@ -7,14 +7,7 @@
   :profiles {:repl {:dependencies [[clj-http "0.9.1"]
                                    [cheshire "5.3.1"]]}}
 
-  :plugins 
-  [   
-     [theladders/lein-uberjar-deploy "0.1.2"]
-  ]
+  :plugins [[theladders/lein-uberjar-deploy "0.1.2"]]
 
-  :repositories
-  [
-     ["snapshots" {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/snapshots"}]
-     ["releases"  {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/releases"}]
-  ]
-  )
+  :repositories [["snapshots" {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/snapshots"}]
+                 ["releases"  {:id "nexus" :url "http://mercurial:8081/nexus/content/repositories/releases"}]])
