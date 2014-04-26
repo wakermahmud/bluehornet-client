@@ -36,7 +36,7 @@
 
 (defn authentication-to-xml [authentication response-type]
   (xml/element :authentication {}
-               (into [(xml/element :response_type {} (or response-type "php") (xml/element :no_halt {} "1"))]
+               (into [(xml/element :response_type {} (or response-type "php")) (xml/element :no_halt {} "1")]
                (for [[internal external] {:api-key :api_key
                                           :shared-secret :shared_secret}]
                  (xml/element external {} (internal authentication))))))
